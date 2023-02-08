@@ -1,13 +1,13 @@
-project     = "XXX"
+project     = "DNS"
 environment = "Production"
 
 vm_instance = {
   "01" = {
     # VM
-    startup = "order=10"
+    startup = "order=12"
     networks = {
       "01" = {
-        tag    = 2005
+        tag = 2004
       }
     }
 
@@ -17,10 +17,10 @@ vm_instance = {
   },
   "02" = {
     # VM
-    startup = "order=11"
+    startup = "order=13"
     networks = {
       "01" = {
-        tag    = 2005
+        tag = 2004
       }
     }
 

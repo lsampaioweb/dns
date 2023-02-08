@@ -28,14 +28,14 @@ variable "vm_instance" {
     vmid        = optional(number)
     description = optional(string)
     bios        = optional(string)
-    onboot      = optional(bool)
+    onboot      = optional(bool, true)
     startup     = optional(string)
     oncreate    = optional(bool)
     pool        = optional(string)
 
     ## Clone
     os_type      = optional(string)
-    clone        = optional(string, "ubuntu-22-04-server-standard")
+    clone        = optional(string, "ubuntu-22-04-server-std-docker")
     full_clone   = optional(bool)
     force_create = optional(bool)
 

@@ -1,9 +1,7 @@
-# {project_name}
-Description XXX.
+# DNS Server
+Project that will create the VMs that will work as the DNS servers of the HomeLab.
 
 # Scripts:
-[Packer](packer/ "Packer")
-
 [Terraform](terraform/ "Terraform")
 
 [Ansible](ansible/ "Ansible")
