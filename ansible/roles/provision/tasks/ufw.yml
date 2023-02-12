@@ -1,0 +1,7 @@
+---
+- name: "Adding UFW rules"
+  ansible.builtin.import_tasks: "roles/common/tasks/debian/os/ufw.yml"
+  vars:
+    rules:
+      - {rule: "allow", proto: "udp", to_port: "53", comment: "Allow DNS requests for all internall networks - UDP"}
+      - {rule: "allow", proto: "tcp", to_port: "53", comment: "Allow DNS requests for all internall networks - TCP"}

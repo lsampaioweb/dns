@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  bind9:
+    image: "ubuntu/bind9:latest"
+    restart: "unless-stopped"
+    security_opt:
+      - "no-new-privileges:true"
+    environment:
+      - TZ=America/Maceio
+      - BIND9_USER=bind
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./config/bind/:/etc/bind/"
+      - "./config/named/:/etc/default/"

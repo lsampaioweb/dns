@@ -1,0 +1,18 @@
+$TTL    2d
+@           IN      SOA     dns1.homelab. root.homelab. (
+                        202202081   ; Serial
+                        12H         ; Refresh
+                        15m         ; Retry
+                        1W          ; Expire
+                        3H )        ; Negative Cache TTL
+;
+
+; NS records for name servers
+@           IN      NS      dns.homelab.
+@           IN      NS      dns1.homelab.
+@           IN      NS      dns2.homelab.
+
+; A records for name servers
+dns         IN      A      10.0.4.4
+dns1        IN      A      {{ (state == 'MASTER') | ternary(ansible_host, unicast_peer_ip) }}
+dns2        IN      A      {{ (state == 'MASTER') | ternary(unicast_peer_ip, ansible_host) }}

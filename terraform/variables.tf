@@ -35,7 +35,7 @@ variable "vm_instance" {
 
     ## Clone
     os_type      = optional(string)
-    clone        = optional(string, "ubuntu-22-04-server-std-docker")
+    clone        = optional(string, "ubuntu-22-04-server-standard")
     full_clone   = optional(bool)
     force_create = optional(bool)
 
