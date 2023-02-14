@@ -1,16 +1,16 @@
 $TTL    2d
-@           IN      SOA     dns1.homelab. root.homelab. (
-                        202202081   ; Serial
-                        12H         ; Refresh
-                        15m         ; Retry
-                        1W          ; Expire
-                        3H )        ; Negative Cache TTL
+@           IN      SOA     dns.homelab. root.homelab. (
+                        1       ; Serial
+                        12H     ; Refresh
+                        15m     ; Retry
+                        1W      ; Expire
+                        3H )    ; Negative Cache TTL
 ;
 
 ; NS records for name servers
-@           IN      NS      dns.homelab.
-@           IN      NS      dns1.homelab.
-@           IN      NS      dns2.homelab.
+            IN      NS      dns.homelab.
+            IN      NS      dns1.homelab.
+            IN      NS      dns2.homelab.
 
 ; A records for name servers
 dns         IN      A      10.0.4.4

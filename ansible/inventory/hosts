@@ -1,5 +1,0 @@
-[master]
-staging-dns-01 ansible_host=10.0.4.8 password_id=ubuntu-22-04-server-standard hostname=staging-dns-01 state=MASTER priority=250 unicast_src_ip=10.0.4.8 unicast_peer_ip=10.0.4.13
-
-[backup]
-staging-dns-02 ansible_host=10.0.4.13 password_id=ubuntu-22-04-server-standard hostname=staging-dns-02 state=BACKUP priority=240 unicast_src_ip=10.0.4.13 unicast_peer_ip=10.0.4.8
