@@ -23,7 +23,7 @@ module "dynamic_inventory" {
       priority       = value.priority
       unicast_src_ip = module.homelab_project.vms[key].vm_ipv4
 
-      unicast_peer_ip = join(",", [
+      unicast_peer_ip = join(";", [
         for key1, value1 in var.vm_instance :
         module.homelab_project.vms[key1].vm_ipv4
         if module.homelab_project.vms[key].vm_ipv4 !=
