@@ -1,29 +1,11 @@
 ---
-# - name: "Enabling port 53 for the docker container"
-#   ansible.builtin.replace:
-#     path: "/etc/systemd/resolved.conf"
-#     regexp: '^(#DNSStubListener=yes)$'
-#     replace: "DNSStubListener=no"
-#   notify: "Restart Systemd-Resolved"
-
-# - name: "Force all notified handlers to run at this point, not waiting for normal sync points"
-#   ansible.builtin.meta: "flush_handlers"
-
-# - name: "Ensure the '/var/cache/bind/' directory exists"
-#   ansible.builtin.file:
-#     path: "/var/cache/bind/"
-#     state: "directory"
-#     owner: "root"
-#     group: "bind"
-#     mode: "0665"
-
-# - name: "Copying the application's file to the target"
-#   ansible.builtin.copy:
-#     src: "docker/"
-#     dest: "{{ bind_path }}"
-#     owner: "root"
-#     group: "bind"
-#     mode: "0644"
+- name: "Ensure the '/var/cache/bind/' directory exists"
+  ansible.builtin.file:
+    path: "/var/cache/bind/"
+    state: "directory"
+    owner: "root"
+    group: "bind"
+    mode: "0665"
 
 - name: "Copying files to the target node"
   ansible.builtin.template:
@@ -38,11 +20,3 @@
     - { src: "zones/forward.homelab.j2", dest: "/var/cache/bind/forward.homelab" }
     - { src: "zones/reverse.homelab.j2", dest: "/var/cache/bind/reverse.homelab" }
   notify: "Restart Bind9"
-
-# - name: "Creating and starting services (docker-compose up)"
-#   community.docker.docker_compose:
-#     project_name: "dns"
-#     project_src: "{{ bind_path }}"
-#     state: "present"
-#     restarted: true
-#   register: "output"
