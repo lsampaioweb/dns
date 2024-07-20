@@ -14,7 +14,7 @@ options {
 
   listen-on { localhost; {{ ansible_host }}; 10.0.4.4; };  # This private IP address.
   listen-on-v6 { none; };       # disable bind on IPv6.
-  
+
   forwarders {
     192.168.0.2;
   };
@@ -22,12 +22,12 @@ options {
 
 zone "homelab" IN {
   type {{ (state == 'MASTER') | ternary('master', 'secondary') }};
-  file "forward.homelab";
+  file "forward.lan.homelab";
   {{ (state == 'MASTER') | ternary('allow-transfer', 'masters') }} { {{ unicast_peer_ip }}; }; # Other server IP address.
 };
 
 zone "0.10.in-addr.arpa" IN {
   type {{ (state == 'MASTER') | ternary('master', 'secondary') }};
-  file "reverse.homelab";
+  file "reverse.lan.homelab";
   {{ (state == 'MASTER') | ternary('allow-transfer', 'masters') }} { {{ unicast_peer_ip }}; }; # Other server IP address.
 };

@@ -1,5 +1,5 @@
 $TTL    2d
-@           IN      SOA     dns.homelab. root.homelab. (
+@           IN      SOA     dns.lan.homelab. root.lan.homelab. (
                         1       ; Serial
                         12H     ; Refresh
                         15m     ; Retry
@@ -8,11 +8,11 @@ $TTL    2d
 ;
 
 ; NS records for name servers
-            IN      NS      dns.homelab.
-            IN      NS      dns1.homelab.
-            IN      NS      dns2.homelab.
+            IN      NS      dns.lan.homelab.
+            IN      NS      dns1.lan.homelab.
+            IN      NS      dns2.lan.homelab.
 
 ; PTR Records
-4.4   IN      PTR     dns.homelab.
-{{ ((state == 'MASTER') | ternary(ansible_host, unicast_peer_ip)).split('.')[2:] | reverse | join('.') }}   IN      PTR     dns1.homelab.
-{{ ((state == 'MASTER') | ternary(unicast_peer_ip, ansible_host)).split('.')[2:] | reverse | join('.') }}   IN      PTR     dns2.homelab.
+4.4   IN      PTR     dns.lan.homelab.
+{{ ((state == 'MASTER') | ternary(ansible_host, unicast_peer_ip)).split('.')[2:] | reverse | join('.') }}   IN      PTR     dns1.lan.homelab.
+{{ ((state == 'MASTER') | ternary(unicast_peer_ip, ansible_host)).split('.')[2:] | reverse | join('.') }}   IN      PTR     dns2.lan.homelab.

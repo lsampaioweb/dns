@@ -1,5 +1,5 @@
 $TTL    2d
-@           IN      SOA     dns.homelab. root.homelab. (
+@           IN      SOA     dns.lan.homelab. root.lan.homelab. (
                         1       ; Serial
                         12H     ; Refresh
                         15m     ; Retry
@@ -8,9 +8,9 @@ $TTL    2d
 ;
 
 ; NS records for name servers
-            IN      NS      dns.homelab.
-            IN      NS      dns1.homelab.
-            IN      NS      dns2.homelab.
+            IN      NS      dns.lan.homelab.
+            IN      NS      dns1.lan.homelab.
+            IN      NS      dns2.lan.homelab.
 
 ; A records for name servers
 dns         IN      A      10.0.4.4

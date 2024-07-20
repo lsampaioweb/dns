@@ -17,6 +17,6 @@
   loop:
     - { src: "named", dest: "/etc/default/named" }
     - { src: "named.conf.j2", dest: "{{ bind_path }}/named.conf" }
-    - { src: "zones/forward.homelab.j2", dest: "/var/cache/bind/forward.homelab" }
-    - { src: "zones/reverse.homelab.j2", dest: "/var/cache/bind/reverse.homelab" }
+    - { src: "zones/forward.lan.homelab.j2", dest: "/var/cache/bind/forward.lan.homelab" }
+    - { src: "zones/reverse.lan.homelab.j2", dest: "/var/cache/bind/reverse.lan.homelab" }
   notify: "Restart Bind9"
