@@ -20,7 +20,7 @@ options {
   };
 };
 
-zone "homelab" IN {
+zone "lan.homelab" IN {
   type {{ (state == 'MASTER') | ternary('master', 'secondary') }};
   file "forward.lan.homelab";
   {{ (state == 'MASTER') | ternary('allow-transfer', 'masters') }} { {{ unicast_peer_ip }}; }; # Other server IP address.
